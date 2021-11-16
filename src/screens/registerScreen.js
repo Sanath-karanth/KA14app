@@ -11,7 +11,6 @@ import { SafeAreaView,
             BackHandler,
             Platform } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import { Ionicons,Feather,FontAwesome5,Entypo,FontAwesome } from '@expo/vector-icons';
 import { Input } from 'react-native-elements';
 import * as Font from 'expo-font';
@@ -28,7 +27,7 @@ const fetchFonts = () => {
   });
 };
 
-export default function RegisterScreen() {
+export default function RegisterScreen({navigation}) {
 
   const [fontLoaded, setFontLoaded] = useState(false);
   const [spin, setSpin] = useState(true);
@@ -47,7 +46,6 @@ export default function RegisterScreen() {
         errors.username = '* Username is required.';
     }else if (!/^[A-Za-z\b]+$/.test(values.username)) {
         errors.username = 'Please enter a Valid username.';
-        // setNameerr(true);
   }
 
      if (!values.email) {
@@ -57,7 +55,7 @@ export default function RegisterScreen() {
     }
 
     if (!values.phoneno) {
-        errors.phoneno = 'Please Enter a valid Phone number.';
+        errors.phoneno = '* Phone no is required.';
     }else if (!/[6-9]\d{9}$/i.test(values.phoneno)) {
       errors.phoneno = 'Please enter a Valid 10-digit phone number.';
     }
@@ -71,8 +69,8 @@ export default function RegisterScreen() {
     return errors;
 };
 
-  const explorepress = () => {
-    console.log('pressed');
+  const takemePress = () => {
+    navigation.navigate('dashboard');
   }
   
   useEffect(() => {
@@ -110,8 +108,8 @@ export default function RegisterScreen() {
         
           <KeyboardAvoidingView
             behavior={Platform.OS === "ios" ? "padding" : "height"}
-            keyboardVerticalOffset={Platform.OS === "ios" ? 64 : 0}
-            style={{ flex: 1 }}
+            keyboardVerticalOffset={Platform.OS === "ios" ? 64 : 30}
+            style={{ flex: 1}}
           >
            
               <View style={{flex:2}}>
@@ -231,7 +229,7 @@ export default function RegisterScreen() {
                   />
 
                 <TouchableOpacity
-                      onPress={explorepress} 
+                      onPress={takemePress} 
                       style ={styles.registerButton}>
                         <Text style ={{color:'white',fontFamily:'Avenir-Roman'}}>TAKE ME IN</Text>
                 </TouchableOpacity>
@@ -287,7 +285,9 @@ export default function RegisterScreen() {
     registerButton: {
       borderRadius:6,
       height:40,
-      margin: 20,
+      marginLeft: 20,
+      marginRight: 20,
+      marginBottom:20,
       backgroundColor:'black',
       justifyContent: 'center',
       alignItems: 'center'

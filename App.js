@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import SplashScreen from './src/screens/splashScreen';
 import RegisterScreen from './src/screens/registerScreen';
+import DashboardScreen from './src/screens/dashboardScreen';
 
 const Stack = createStackNavigator();
 
@@ -15,6 +16,7 @@ function MyStack() {
     }}>
       <Stack.Screen name="splash" options={{headerShown: false}} component={SplashScreen} />
       <Stack.Screen name="register" options={{headerShown: false}} component={RegisterScreen} />
+      <Stack.Screen name="dashboard" options={{headerShown: true}} component={DashboardScreen} />
     </Stack.Navigator>
   );
 }
