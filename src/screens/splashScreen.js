@@ -58,8 +58,8 @@ export default function SplashScreen({navigation}) {
           <View style={{flex:1}}>
           </View>
           <View style={{flex:1}}>
-              <Text style ={styles.headertext1}>Welcome to</Text>
-              <Text style ={styles.headertext2}>Gateway of Malnad</Text>
+              <Text style ={styles.headertextwelcome}>Welcome to</Text>
+              <Text style ={styles.headertextgatway}>Gateway of Malnad</Text>
           </View>
           <View style={{flex:0.1}}>
           </View>
@@ -98,13 +98,13 @@ export default function SplashScreen({navigation}) {
       justifyContent: 'center',
       marginHorizontal: 20,
     },
-    headertext1: {
+    headertextgatway: {
       color: '#000000',
       justifyContent: 'center',
       fontSize:30,
       fontFamily:'Avenir-Book'
     },
-    headertext2: {
+    headertextwelcome: {
       color: '#CECECE',
       justifyContent: 'center',
       fontSize:30,
