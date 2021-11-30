@@ -55,9 +55,9 @@ export default function DashboardScreen({navigation}) {
 
   return (
     <SafeAreaView style={styles.container}>
-        <StatusBar backgroundColor="#66C480" barStyle="light-content" />
+        <StatusBar backgroundColor="#abbabb" barStyle="light-content" />
               <LinearGradient
-                                colors={['#1ABC9D', '#0F994B']}
+                                colors={['#abbabb', '#ffffff']}
                                 start={{ x: 0, y: 0 }}
                                 end={{ x: 1, y: 1 }}
                                 style={{ flex: 1, textAlign: 'center', justifyContent: 'center' }}>
