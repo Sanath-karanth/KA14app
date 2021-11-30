@@ -16,7 +16,7 @@ function MyStack() {
     }}>
       <Stack.Screen name="splash" options={{headerShown: false}} component={SplashScreen} />
       <Stack.Screen name="register" options={{headerShown: false}} component={RegisterScreen} />
-      <Stack.Screen name="dashboard" options={{headerShown: true}} component={DashboardScreen} />
+      <Stack.Screen name="dashboard" options={{headerShown: false}} component={DashboardScreen} />
     </Stack.Navigator>
   );
 }

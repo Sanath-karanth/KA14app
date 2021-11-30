@@ -70,7 +70,12 @@ export default function RegisterScreen({navigation}) {
 };
 
   const takemePress = () => {
-    navigation.navigate('dashboard');
+    setSpin(true);
+    const timer = setTimeout(() => {
+      setSpin(false);
+      navigation.navigate('dashboard');
+    }, 4000);
+    return () => clearTimeout(timer);
   }
   
   useEffect(() => {
@@ -100,7 +105,7 @@ export default function RegisterScreen({navigation}) {
         <AnimatedLoader
               visible={spin}
               overlayColor="rgba(0,0,0,0.5)"
-              source={require('./../lotties/loader/7556-loader-blu.json')}
+              source={require('./../lotties/loader/53635-loader.json')}
               animationStyle={styles.lottiespin}
               speed={1}
             >

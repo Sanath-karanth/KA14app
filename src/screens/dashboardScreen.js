@@ -2,6 +2,7 @@ import React,{useState, useRef,useEffect} from 'react';
 import { StatusBar } from 'expo-status-bar';
 import LottieView from 'lottie-react-native';
 import { SafeAreaView,View,StyleSheet,Text,TouchableOpacity } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import AnimatedLoader from "react-native-animated-loader";
@@ -34,7 +35,7 @@ export default function DashboardScreen({navigation}) {
   useEffect(() => {
     if(fontLoaded)
     {
-      animation.current.play();
+      return null;
     }
     else
     {
@@ -55,31 +56,16 @@ export default function DashboardScreen({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
         <StatusBar backgroundColor="#66C480" barStyle="light-content" />
-        <View style={{flex:1}}>
-          <View style={{flex:1}}>
-          </View>
-          <View style={{flex:1}}>
-              <Text style ={styles.headertext1}>Welcome to</Text>
-              <Text style ={styles.headertext2}>Dashboard</Text>
-          </View>
-          <View style={{flex:0.1}}>
-          </View>
-            <View style={{flex:3.5}}>
-              <LottieView
-                      ref={animation}
-                      source={require('./../lotties/image/26623-map-navigation.json')}
-                  />
-            </View>
-          <View style={{flex:0.4}}>
-          </View>
-            <View style={{flex:0.8}}>
-              <TouchableOpacity
-                  onPress={explorepress} 
-                  style ={styles.exploreButton}>
-                      <Text style ={{color:'white',fontFamily:'Avenir-Roman'}}>LET'S EXPLORE</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
+              <LinearGradient
+                                colors={['#1ABC9D', '#0F994B']}
+                                start={{ x: 0, y: 0 }}
+                                end={{ x: 1, y: 1 }}
+                                style={{ flex: 1, textAlign: 'center', justifyContent: 'center' }}>
+                <View style={{flex:1}}>
+                    <Text style ={styles.headertextwelcome}>Welcome to</Text>
+                    <Text style ={styles.headertextgatway}>Gateway of Malnad</Text>
+                </View>                
+              </LinearGradient>
           <AnimatedLoader
               visible={spin}
               overlayColor="rgba(0,0,0,0.5)"
@@ -97,15 +83,14 @@ export default function DashboardScreen({navigation}) {
     container: {
       flex: 1,
       justifyContent: 'center',
-      marginHorizontal: 20,
     },
-    headertext1: {
+    headertextgatway: {
       color: '#000000',
       justifyContent: 'center',
       fontSize:30,
       fontFamily:'Avenir-Book'
     },
-    headertext2: {
+    headertextwelcome: {
       color: '#CECECE',
       justifyContent: 'center',
       fontSize:30,
