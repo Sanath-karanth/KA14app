@@ -115,7 +115,7 @@ export default function TravelScreen({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
       
-        <View style={{flex:0.1,flexDirection:'row',backgroundColor:'transparent',paddingTop:20,marginHorizontal: 20,paddingBottom:10}}>
+        <View style={{flex:0.1,flexDirection:'row',backgroundColor:'transparent',paddingTop:30,marginHorizontal: 20,paddingBottom:10}}>
             <Grid>
                 <Col size={15}>
                 <Button
@@ -241,7 +241,6 @@ export default function TravelScreen({navigation}) {
       justifyContent: 'center',
       // marginHorizontal: 20,
       backgroundColor:'#FBF8F3',
-      marginTop: 25,
     },
     headingtext: {
       color: '#000000',
