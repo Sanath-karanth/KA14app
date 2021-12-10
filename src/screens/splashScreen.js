@@ -1,7 +1,7 @@
 import React,{useState, useRef,useEffect} from 'react';
 // import { StatusBar } from 'expo-status-bar';
 import LottieView from 'lottie-react-native';
-import { SafeAreaView,View,StyleSheet,Text,TouchableOpacity } from 'react-native';
+import { SafeAreaView,View,StyleSheet,Text,TouchableOpacity,ImageBackground } from 'react-native';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import AnimatedLoader from "react-native-animated-loader";
@@ -62,6 +62,7 @@ export default function SplashScreen({navigation}) {
               <Text style ={styles.headertextgatway}>Gateway of Malnad</Text>
           </View>
           <View style={{flex:0.1}}>
+            
           </View>
             <View style={{flex:3.5}}>
               <LottieView
@@ -120,5 +121,6 @@ export default function SplashScreen({navigation}) {
     lottiespin: {
       width: 100,
       height: 100
-    }
+    },
+  
 });
