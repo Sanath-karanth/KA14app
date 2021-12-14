@@ -173,7 +173,7 @@ const DashboardScreen = (props) => {
                   </TouchableOpacity>
                   
                   <Text style ={styles.headertextwelcome}>Welcome to {''}
-                    <Text style ={styles.headertextgatway}>KA-14</Text>
+                    <Text style ={styles.headertextka14}>KA-14</Text>
                   </Text>
 
                   <TouchableOpacity>
@@ -372,10 +372,10 @@ const DashboardScreen = (props) => {
       flex: 1,
       justifyContent: 'center',
     },
-    headertextgatway: {
+    headertextka14: {
       color: '#000000',
       fontSize:24,
-      fontFamily:'Avenir-Roman'
+      fontFamily:'Avenir-Book'
     },
     headertextwelcome: {
       color: '#727272',

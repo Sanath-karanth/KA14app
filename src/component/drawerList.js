@@ -12,11 +12,23 @@ import {
     TouchableOpacity,
     Image
   } from "react-native";
+import * as Font from 'expo-font';
+import AppLoading from 'expo-app-loading';
 import { Card, ListItem, Button, Icon , Divider } from 'react-native-elements';
 import { FontAwesome,Entypo,MaterialCommunityIcons,Feather,MaterialIcons } from '@expo/vector-icons';
 
+const fetchFonts = () => {
+    return Font.loadAsync({
+      'Avenir-Roman': require('../../assets/fonts/Avenir-Roman.ttf'),
+      'Avenir-Book': require('../../assets/fonts/Avenir-Book.ttf'),
+      'Avenir-Heavy': require('../../assets/fonts/Avenir-Heavy.ttf'),
+      'Avenir-Medium': require('../../assets/fonts/Avenir-Medium.ttf'),
+    });
+  };
+
 const DrawerList = ({navigation}) => {
 
+    const [fontLoaded, setFontLoaded] = useState(false);
     const [dropdown,setDropdown] = useState(false);
 
     const categorypress = () => {
@@ -26,6 +38,27 @@ const DrawerList = ({navigation}) => {
     const homeclick = () => {
         navigation.closeDrawer();
       };
+
+      useEffect(() => {
+        if(fontLoaded)
+        {
+          return null;
+        }
+        else
+        {
+          return null;
+        }
+      },[fontLoaded])
+      
+      if (!fontLoaded) {
+        return (
+          <AppLoading
+            startAsync={fetchFonts}
+            onFinish={() => setFontLoaded(true)}
+            onError={() => {}}
+          />
+        );
+      }
 
     return(
         <View style={styles.container}>
@@ -199,19 +232,19 @@ const styles = StyleSheet.create({
       color: '#CECECE',
       justifyContent: 'center',
       fontSize:30,
-      fontFamily:'Avenir-Heavy'
+      fontFamily:'Avenir-Roman'
     },
     nametext: {
         color: '#000000',
         justifyContent: 'center',
         fontSize:22,
-        fontFamily:'Avenir-Medium'
+        fontFamily:'Avenir-Book'
       },
       drawertext: {
         color: '#000000',
         // justifyContent: 'center',
         fontSize:18,
-        fontFamily:'Avenir-Book'
+        fontFamily:'Avenir-Roman'
       },
       drawersubtext: {
         color: '#000000',
@@ -221,7 +254,7 @@ const styles = StyleSheet.create({
       versiontext: {
         color: '#000000',
         fontSize:16,
-        fontFamily:'Avenir-Book',
+        fontFamily:'Avenir-Roman',
       },
       bottomView: {
         width: '100%',

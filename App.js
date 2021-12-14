@@ -14,7 +14,7 @@ const Drawer = createDrawerNavigator();
 
 function MyStack() {
   return (
-    <Stack.Navigator initialRouteName="travel"
+    <Stack.Navigator initialRouteName="dashboard"
     screenOptions={{
       headerShown: true
     }}>
