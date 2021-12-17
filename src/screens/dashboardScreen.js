@@ -65,6 +65,10 @@ const DashboardScreen = (props) => {
       props.navigation.navigate('travel');
     };
 
+    const foodclick = () => {
+      props.navigation.navigate('food');
+    };
+
   const explorepress = () => {
     setSpin(true);
     const timer = setTimeout(() => {
@@ -147,8 +151,6 @@ const DashboardScreen = (props) => {
       />
     );
   }
-
- 
 
   return (
     <SafeAreaView style={styles.container}>
@@ -271,7 +273,7 @@ const DashboardScreen = (props) => {
                       </TouchableOpacity>
                     </View>
                     <View style={styles.cardsubcontainer}>
-                      <TouchableOpacity>
+                      <TouchableOpacity onPress={foodclick}>
                         <Card containerStyle={{backgroundColor:'#FFFFFF'}}>
                           <Card.Title>Food</Card.Title>
                             {/* <Card.Divider/> */}

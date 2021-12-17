@@ -7,6 +7,7 @@ import SplashScreen from './src/screens/splashScreen';
 import RegisterScreen from './src/screens/registerScreen';
 import DashboardScreen from './src/screens/dashboardScreen';
 import TravelScreen from './src/screens/travelScreen';
+import FoodScreen from './src/screens/foodScreen';
 import DrawerScreen from './src/component/drawerList';
 
 const Stack = createStackNavigator();
@@ -22,6 +23,7 @@ function MyStack() {
       <Stack.Screen name="splash" options={{headerShown: false}} component={SplashScreen} />
       <Stack.Screen name="register" options={{headerShown: false}} component={RegisterScreen} />
       <Stack.Screen name="travel" options={{headerShown: false}} component={TravelScreen} />
+      <Stack.Screen name="food" options={{headerShown: false}} component={FoodScreen} />
     </Stack.Navigator>
   );
 }

@@ -39,10 +39,10 @@ export default function TravelScreen({navigation}) {
 
   const [fontLoaded, setFontLoaded] = useState(false);
   const [spin, setSpin] = useState(false);
-  const [digitone, setDigitone] = useState(false);
+  const [digitone, setDigitone] = useState(true);
   const [digittwo, setDigittwo] = useState(false);
   const [digitthree, setDigitthree] = useState(false);
-  const [digitfour, setDigitfour] = useState(true);
+  const [digitfour, setDigitfour] = useState(false);
 
   const [onecolor, setOnecolor] = useState('');
   const [onebgcolor, setOnebgcolor] = useState('');
@@ -71,249 +71,259 @@ export default function TravelScreen({navigation}) {
 
   const popularplaceData = [
     {
-        title:"Sakrebailu",
-        description: "18 km from city.",
-        image: require('../../assets/travel/sakrebailu/elephant1.jpg')
+      tripid:'p1',
+      title:"Sakrebailu",
+      description: "18 km from city center.",
+      image: require('../../assets/travel/sakrebailu/elephant1.jpg')
     },
     {
-        title:"Agumbe",
-        description: "98 km from city.",
-        image:require('../../assets/travel/agumbe/agumbe1.jpg')
+      tripid:'p2',
+      title:"Agumbe",
+      description: "98 km from city center.",
+      image:require('../../assets/travel/agumbe/agumbe1.jpg')
     },
     {
-        title:"Kavaledurga",
-        description: "85 km from city.",
-        image:require('../../assets/travel/kavaledurga/kavaledurga4.jpg')
+      tripid:'p3',
+      title:"Kavaledurga",
+      description: "85 km from city center.",
+      image:require('../../assets/travel/kavaledurga/kavaledurga4.jpg')
     }
   ]
 
   const allplaceData1 = [
     {
       tripid:'1',
-      title:"Jog Falls",
-      description: "115 km from city.",
-      image: require('../../assets/travel/jogfalls/jogfalls7.jpg')
-    },
-    {
-      tripid:'2',  
-      title:"Kodachadri",
-      description: "112 km from city.",
-      image:require('../../assets/travel/kodachadri/kodachadri3.jpg')
-    },
-    {
-      tripid:'3',
-      title:"Honnemaradu",
-      description: "106 km from city.",
-      image:require('../../assets/travel/honnemaradu/honne13.jpg')
-    },
-    {
-      tripid:'4', 
-      title:"Kundadri",
-      description: "94 km from city.",
-      image:require('../../assets/travel/kundadri/kundadri7.jpg')
-    },
-    {
-      tripid:'5',
-      title:"Keladi",
-      description: "88 km from city.",
-      image:require('../../assets/travel/keladi/keladi.jpg')
-    },
-    {
-      tripid:'6',
-      title:"Kudli",
-      description: "22 km from city.",
-      image:require('../../assets/travel/koodli/kudli1.jpg')
-    },
-    {
-      tripid:'7',
-      title:"Gudavi Bird Sanctuary",
-      description: "106 km from city.",
-      image:require('../../assets/travel/gudavi/gudavi1.jpg')
-    },
-    {
-      tripid:'8',
-      title:"Mandagadde Bird Sanctuary",
-      description: "36 km from city.",
-      image:require('../../assets/travel/mandgadde/mandgadde4.jpg')
-    },
-    {
-      tripid:'9',
-      title:"Gajanur Dam",
-      description: "20 km from city.",
-      image:require('../../assets/travel/gajanur/gajanur.jpg')
-    },
-    {
-      tripid:'10',
-      title:"Barkana Falls",
-      description: "98 km from city.",
-      image:require('../../assets/travel/barkana/barkana.jpg')
-    },
-  ]
-
-  const allplaceData2 = [
-    {
-      tripid:'11',
-      title:"Onake Abbi Falls",
-      description: "96 km from city.",
-      image: require('../../assets/travel/onakefalls/onake5.jpg')
-    },
-    {
-      tripid:'12',  
-      title:"Nagara Fort",
-      description: "90 km from city.",
-      image:require('../../assets/travel/nagara/nagara3.jpg')
-    },
-    {
-      tripid:'13',
-      title:"Kunchikal Falls",
-      description: "101 km from city.",
-      image:require('../../assets/travel/kunchikal/kunchi.jpg')
-    },
-    {
-      tripid:'14', 
-      title:"Linganamakki Dam",
-      description: "106 km from city.",
-      image:require('../../assets/travel/linganamakki/linganamakki0.jpg')
-    },
-    {
-      tripid:'15',
-      title:"Unchalli Falls",
-      description: "146 km from city.",
-      image:require('../../assets/travel/unchalli/unchalli0.jpg')
-    },
-    {
-      tripid:'16',
-      title:"Jogi Gundi Falls",
-      description: "100 km from city.",
-      image:require('../../assets/travel/jogigundi/jogigundi0.jpg')
-    },
-    {
-      tripid:'17',
-      title:"Dabbe Falls",
-      description: "79 km from city.",
-      image:require('../../assets/travel/dabbe/dabbe.jpg')
-    },
-    {
-      tripid:'18',
-      title:"Sigandur",
-      description: "112 km from city.",
-      image:require('../../assets/travel/sigandur/sigandur1.jpg')
-    },
-    {
-      tripid:'19',
       title:"Mattur",
-      description: "10 km from city.",
+      description: "10 km from city center.",
       image:require('../../assets/travel/mattur/mattur.jpg')
     },
     {
-      tripid:'20',
-      title:"Hidlumane Falls",
-      description: "127 km from city.",
-      image:require('../../assets/travel/hidlumane/hidlumane4.jpg')
+      tripid:'2',  
+      title:"Kudli",
+      description: "20 km from city center.",
+      image:require('../../assets/travel/koodli/kudli1.jpg')
     },
-  ]
-
-  const allplaceData3 = [
-    {
-      tripid:'21',
-      title:"Achakanya Falls",
-      description: "77 km from city.",
-      image: require('../../assets/travel/achakanya/achakanya.jpg')
+	{
+      tripid:'3', 
+      title:"Gajanur Dam",
+      description: "20 km from city center.",
+      image:require('../../assets/travel/gajanur/gajanur.jpg')
     },
     {
-      tripid:'22',  
-      title:"Hebbe Falls",
-      description: "74 km from city.",
-      image:require('../../assets/travel/hebbe/hebbe1.jpg')
+      tripid:'4',
+      title:"Badra Wildlife Sanctuary",
+      description: "26 km from city center.",
+      image:require('../../assets/travel/badrawild/badrawild0.jpg')
     },
     {
-      tripid:'23',
+      tripid:'5',
+      title:"Mandagadde Bird Sanctuary",
+      description: "36 km from city center.",
+      image:require('../../assets/travel/mandgadde/mandgadde4.jpg')
+    },
+    {
+      tripid:'6',
+      title:"Amruthapura",
+      description: "47 km from city center.",
+      image:require('../../assets/travel/amruthapura/amruthapura5.jpg')
+    },
+    {
+      tripid:'7',
       title:"Kallathigiri Falls",
-      description: "60 km from city.",
+      description: "60 km from city center.",
       image:require('../../assets/travel/kallathigiri/kallathigiri2.jpg')
     },
     {
-      tripid:'24', 
-      title:"Kemmangundi Peak",
-      description: "70 km from city.",
-      image:require('../../assets/travel/kemmangundi/kemmangundi7.jpg')
-    },
-    {
-      tripid:'25',
-      title:"Bheemankatte Matha",
-      description: "71 km from city.",
-      image:require('../../assets/travel/bheemankatte/bheemankatte0.jpg')
-    },
-    {
-      tripid:'26',
-      title:"Mullayangiri Peak",
-      description: "113 km from city.",
-      image:require('../../assets/travel/mullayangiri/mullayangiri.jpg')
-    },
-    {
-      tripid:'27',
-      title:"Z Point Peak",
-      description: "66 km from city.",
+      tripid:'8',
+      title:"Z-Point Peak",
+      description: "66 km from city center.",
       image:require('../../assets/travel/zpoint/zpoint7.jpg')
     },
     {
+      tripid:'9',
+      title:"Kemmangundi Peak",
+      description: "70 km from city center.",
+      image:require('../../assets/travel/kemmangundi/kemmangundi7.jpg')
+    },
+    {
+      tripid:'10',
+      title:"Bheemankatte Matha",
+      description: "71 km from city center.",
+      image:require('../../assets/travel/bheemankatte/bheemankatte0.jpg')
+    },
+  ]
+  
+const allplaceData2 = [
+    {
+      tripid:'11',
+      title:"Hebbe Falls",
+      description: "74 km from city center.",
+      image:require('../../assets/travel/hebbe/hebbe1.jpg')
+    },
+    {
+      tripid:'12',  
+      title:"Achakanya Falls",
+      description: "77 km from city center.",
+      image: require('../../assets/travel/achakanya/achakanya.jpg')
+    },
+    {
+      tripid:'13',
+      title:"Dabbe Falls",
+      description: "79 km from city center.",
+      image:require('../../assets/travel/dabbe/dabbe.jpg')
+    },
+    {
+      tripid:'14', 
+      title:"Keladi",
+      description: "88 km from city center.",
+      image:require('../../assets/travel/keladi/keladi.jpg')
+    },
+    {
+      tripid:'15',
+      title:"Nagara Fort",
+      description: "90 km from city center.",
+      image:require('../../assets/travel/nagara/nagara3.jpg')
+    },
+    {
+      tripid:'16',
+      title:"Ayyanakere Lake",
+      description: "90 km from city center.",
+      image:require('../../assets/travel/ayyanakere/ayyanakere4.jpg')
+    },
+    {
+      tripid:'17',
+      title:"Kundadri",
+      description: "94 km from city center.",
+      image:require('../../assets/travel/kundadri/kundadri7.jpg')
+    },
+    {
+      tripid:'18',
+      title:"Onake Abbi Falls",
+      description: "96 km from city center.",
+      image: require('../../assets/travel/onakefalls/onake5.jpg')
+    },
+    {
+      tripid:'19',
+      title:"Barkana Falls",
+      description: "98 km from city center.",
+      image:require('../../assets/travel/barkana/barkana.jpg')
+    },
+    {
+      tripid:'20',
+      title:"Jogi Gundi Falls",
+      description: "100 km from city center.",
+      image:require('../../assets/travel/jogigundi/jogigundi0.jpg')
+    },
+  ]
+  
+const allplaceData3 = [
+    {
+      tripid:'21',
+      title:"Kunchikal Falls",
+      description: "101 km from city center.",
+      image:require('../../assets/travel/kunchikal/kunchi.jpg')
+    },
+    {
+      tripid:'22',  
+      title:"Belavadi",
+      description: "103 km from city center.",
+      image: require('../../assets/travel/belavadi/belavadi1.jpg')
+    },
+    {
+      tripid:'23',
+      title:"Honnemaradu",
+      description: "106 km from city center.",
+      image:require('../../assets/travel/honnemaradu/honne13.jpg')
+    },
+    {
+      tripid:'24', 
+      title:"Gudavi Bird Sanctuary",
+      description: "106 km from city center.",
+      image:require('../../assets/travel/gudavi/gudavi1.jpg')
+    },
+    {
+      tripid:'25',
+      title:"Linganamakki Dam",
+      description: "106 km from city center.",
+      image:require('../../assets/travel/linganamakki/linganamakki0.jpg')
+    },
+    {
+      tripid:'26',
+      title:"Sigandur",
+      description: "112 km from city center.",
+      image:require('../../assets/travel/sigandur/sigandur1.jpg')
+    },
+    {
+      tripid:'27',
+      title:"Kodachadri",
+      description: "112 km from city center.",
+      image:require('../../assets/travel/kodachadri/kodachadri3.jpg')
+    },
+    {
       tripid:'28',
-      title:"Baba Budan Giri Peak",
-      description: "113 km from city.",
-      image:require('../../assets/travel/bababudangiri/bababudangiri4.jpg')
+      title:"Mullayangiri Peak",
+      description: "113 km from city center.",
+      image:require('../../assets/travel/mullayangiri/mullayangiri.jpg')
     },
     {
       tripid:'29',
-      title:"Kudremukh Peak",
-      description: "138 km from city.",
-      image:require('../../assets/travel/kudremukh/kudremukh8.jpg')
+      title:"Baba Budan Giri Peak",
+      description: "113 km from city center.",
+      image:require('../../assets/travel/bababudangiri/bababudangiri4.jpg')
     },
     {
       tripid:'30',
-      title:"Badra Wildlife Sanctuary",
-      description: "26 km from city.",
-      image:require('../../assets/travel/badrawild/badrawild0.jpg')
+      title:"Deviramma Betta",
+      description: "113 km from city center.",
+      image:require('../../assets/travel/deviramma/deviramma1.jpg')
     },
   ]
-
-  const allplaceData4 = [
+  
+const allplaceData4 = [
     {
       tripid:'31',
-      title:"Belavadi",
-      description: "103 km from city.",
-      image: require('../../assets/travel/belavadi/belavadi1.jpg')
+      title:"Jog Falls",
+      description: "115 km from city center.",
+      image: require('../../assets/travel/jogfalls/jogfalls7.jpg')
     },
     {
       tripid:'32',  
       title:"Kalasa",
-      description: "117 km from city.",
+      description: "117 km from city center.",
       image:require('../../assets/travel/kalasa/kalasa0.jpg')
     },
     {
       tripid:'33',
-      title:"Ballalarayana Durga Fort",
-      description: "127 km from city.",
-      image:require('../../assets/travel/ballalarayanadurga/ballafort0.jpg')
+      title:"Hidlumane Falls",
+      description: "127 km from city center.",
+      image:require('../../assets/travel/hidlumane/hidlumane4.jpg')
     },
     {
       tripid:'34', 
-      title:"Deviramma Betta",
-      description: "113 km from city.",
-      image:require('../../assets/travel/deviramma/deviramma1.jpg')
+      title:"Ballalarayana Durga Fort",
+      description: "127 km from city center.",
+      image:require('../../assets/travel/ballalarayanadurga/ballafort0.jpg')
     },
     {
       tripid:'35',
-      title:"Amruthapura",
-      description: "47 km from city.",
-      image:require('../../assets/travel/amruthapura/amruthapura5.jpg')
+      title:"Kudremukh Peak",
+      description: "138 km from city center.",
+      image:require('../../assets/travel/kudremukh/kudremukh8.jpg')
+    },
+    {
+      tripid:'36',
+      title:"Unchalli Falls",
+      description: "146 km from city center.",
+      image:require('../../assets/travel/unchalli/unchalli0.jpg')
     },
   ]
+  
 
   const digitoneclick = () => {
-    setDigitone(false);
+    setDigitone(true);
     setDigittwo(false);
     setDigitthree(false);
-    setDigitfour(true);
+    setDigitfour(false);
     setOnecolor('#FFFFFF');
     setOnebgcolor('#000000');
     setTwocolor('#000000');
@@ -370,6 +380,7 @@ export default function TravelScreen({navigation}) {
     setThreebgcolor('#DEDEDE');
     setFourcolor('#FFFFFF');
     setFourbgcolor('#000000');
+    loadertimeout();
   }
 
   const backiconclick = () => {
@@ -405,7 +416,7 @@ export default function TravelScreen({navigation}) {
                       backgroundColor:'transparent',
                       paddingTop:50,
                       marginHorizontal: 20,
-                      paddingBottom:0}}>
+                      paddingBottom:2}}>
             <Grid>
                 <Col size={15}>
                   <Button
@@ -474,7 +485,7 @@ export default function TravelScreen({navigation}) {
           </View>
 
           <View style={{flex:1,backgroundColor:'transparent',paddingTop:10,paddingBottom:15}}>
-            <Text style ={styles.headingtext}>All Places (37)</Text>
+            <Text style ={styles.headingtext}>All Places (36)</Text>
             { digitone && allplaceData1.map((item,key) => {
               return(
               <View key={key}>
@@ -486,7 +497,7 @@ export default function TravelScreen({navigation}) {
                       />
                   </View>
                   <View style={{justifyContent:'center',flexDirection:'row',paddingTop:4}}>
-                      <Text style={styles.cardtitletext}>{item.title}</Text>
+                      <Text style={styles.cardtitletext}>{item.tripid}.{' '}{item.title}</Text>
                   </View>
                   <View style={{flex:1,flexDirection:'row',paddingTop:2,paddingLeft:4}}>
                           <MaterialCommunityIcons 
@@ -519,7 +530,7 @@ export default function TravelScreen({navigation}) {
                       />
                   </View>
                   <View style={{justifyContent:'center',flexDirection:'row',paddingTop:4}}>
-                      <Text style={styles.cardtitletext}>{item.title}</Text>
+                      <Text style={styles.cardtitletext}>{item.tripid}.{' '}{item.title}</Text>
                   </View>
                   <View style={{flex:1,flexDirection:'row',paddingTop:2,paddingLeft:4}}>
                           <MaterialCommunityIcons 
@@ -552,7 +563,7 @@ export default function TravelScreen({navigation}) {
                       />
                   </View>
                   <View style={{justifyContent:'center',flexDirection:'row',paddingTop:4}}>
-                      <Text style={styles.cardtitletext}>{item.title}</Text>
+                      <Text style={styles.cardtitletext}>{item.tripid}.{' '}{item.title}</Text>
                   </View>
                   <View style={{flex:1,flexDirection:'row',paddingTop:2,paddingLeft:4}}>
                           <MaterialCommunityIcons 
@@ -585,7 +596,7 @@ export default function TravelScreen({navigation}) {
                       />
                   </View>
                   <View style={{justifyContent:'center',flexDirection:'row',paddingTop:4}}>
-                      <Text style={styles.cardtitletext}>{item.title}</Text>
+                      <Text style={styles.cardtitletext}>{item.tripid}.{' '}{item.title}</Text>
                   </View>
                   <View style={{flex:1,flexDirection:'row',paddingTop:2,paddingLeft:4}}>
                           <MaterialCommunityIcons 
@@ -674,7 +685,7 @@ export default function TravelScreen({navigation}) {
       justifyContent: 'center',
       fontSize:16,
       fontFamily:'Avenir-Roman',
-      width: 150,
+      width: 170,
       paddingTop: 4,
     },
     bottomcarddistancetext: {
@@ -693,7 +704,7 @@ export default function TravelScreen({navigation}) {
       paddingBottom: 0,
     },
     topcardimage: {
-      width: 210,
+      width: 220,
       height: 180,
       borderRadius:8,
     },
