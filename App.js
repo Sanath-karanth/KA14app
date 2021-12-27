@@ -8,6 +8,11 @@ import RegisterScreen from './src/screens/registerScreen';
 import DashboardScreen from './src/screens/dashboardScreen';
 import TravelScreen from './src/screens/travelScreen';
 import FoodScreen from './src/screens/foodScreen';
+import ShoppingScreen from './src/screens/shoppingScreen';
+import HealthcareScreen from './src/screens/healthcareScreen';
+import ProfileScreen from './src/screens/profileScreen';
+import FeedbackScreen from './src/screens/feedbackScreen';
+
 import DrawerScreen from './src/component/drawerList';
 
 const Stack = createStackNavigator();
@@ -24,6 +29,10 @@ function MyStack() {
       <Stack.Screen name="register" options={{headerShown: false}} component={RegisterScreen} />
       <Stack.Screen name="travel" options={{headerShown: false}} component={TravelScreen} />
       <Stack.Screen name="food" options={{headerShown: false}} component={FoodScreen} />
+      <Stack.Screen name="shop" options={{headerShown: false}} component={ShoppingScreen} />
+      <Stack.Screen name="health" options={{headerShown: false}} component={HealthcareScreen} />
+      <Stack.Screen name="profile" options={{headerShown: false}} component={ProfileScreen} />
+      <Stack.Screen name="feedback" options={{headerShown: false}} component={FeedbackScreen} />
     </Stack.Navigator>
   );
 }

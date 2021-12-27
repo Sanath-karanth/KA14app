@@ -69,6 +69,14 @@ const DashboardScreen = (props) => {
       props.navigation.navigate('food');
     };
 
+    const shopclick = () => {
+      props.navigation.navigate('shop');
+    };
+
+    const healthclick = () => {
+      props.navigation.navigate('health');
+    };
+
   const explorepress = () => {
     setSpin(true);
     const timer = setTimeout(() => {
@@ -132,8 +140,8 @@ const DashboardScreen = (props) => {
       animationfood.current.play();
       animationshopping.current.play();
       animationhealthcare.current.play();
-      animationeducation.current.play();
-      animationbank.current.play();
+      // animationeducation.current.play();
+      // animationbank.current.play();
       // return null;
     }
     else
@@ -289,7 +297,7 @@ const DashboardScreen = (props) => {
                       </TouchableOpacity>
                     </View>
                     <View style={styles.cardsubcontainer}>
-                      <TouchableOpacity>
+                      <TouchableOpacity onPress={shopclick}>
                         <Card containerStyle={{backgroundColor:'#FFFFFF'}}>
                           <Card.Title>Shopping</Card.Title>
                             {/* <Card.Divider/> */}
@@ -305,7 +313,7 @@ const DashboardScreen = (props) => {
                       </TouchableOpacity>
                     </View>
                     <View style={styles.cardsubcontainer}>
-                      <TouchableOpacity>
+                      <TouchableOpacity onPress={healthclick}>
                         <Card containerStyle={{backgroundColor:'#FFFFFF'}}>
                           <Card.Title>Health Care</Card.Title>
                             {/* <Card.Divider/> */}
@@ -320,11 +328,10 @@ const DashboardScreen = (props) => {
                         </Card>
                       </TouchableOpacity>
                     </View>
-                    <View style={styles.cardsubcontainer}>
+                    {/* <View style={styles.cardsubcontainer}>
                       <TouchableOpacity>
                         <Card containerStyle={{backgroundColor:'#FFFFFF'}}>
                           <Card.Title>Education</Card.Title>
-                            {/* <Card.Divider/> */}
                           <View style={styles.bottomcard}>
                           <LottieView
                               autoPlay={false} 
@@ -340,7 +347,6 @@ const DashboardScreen = (props) => {
                       <TouchableOpacity>
                         <Card containerStyle={{backgroundColor:'#FFFFFF'}}>
                           <Card.Title>Banking</Card.Title>
-                            {/* <Card.Divider/> */}
                           <View style={styles.bottomcard}>
                           <LottieView
                               autoPlay={false} 
@@ -351,7 +357,7 @@ const DashboardScreen = (props) => {
                           </View>
                         </Card>
                       </TouchableOpacity>
-                    </View>
+                    </View> */}
 
                   </View>
                 </ScrollView>                

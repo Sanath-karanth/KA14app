@@ -35,9 +35,52 @@ const DrawerList = ({navigation}) => {
         setDropdown(!dropdown);
     }
 
+    const profileclick = () => {
+      navigation.navigate('profile');
+      navigation.closeDrawer();
+      setDropdown(false);
+    };
+
     const homeclick = () => {
         navigation.closeDrawer();
-      };
+        setDropdown(false);
+    };
+
+    const travelclick = () => {
+      navigation.navigate('travel');
+      navigation.closeDrawer();
+      setDropdown(false);
+    };
+
+    const foodclick = () => {
+      navigation.navigate('food');
+      navigation.closeDrawer();
+      setDropdown(false);
+    };
+
+    const shoppingclick = () => {
+      navigation.navigate('shop');
+      navigation.closeDrawer();
+      setDropdown(false);
+    };
+
+    const healthclick = () => {
+      navigation.navigate('health');
+      navigation.closeDrawer();
+      setDropdown(false);
+    };
+
+    const aboutclick = () => {
+      navigation.navigate('about');
+      navigation.closeDrawer();
+      setDropdown(false);
+    };
+
+    const feedbackclick = () => {
+      navigation.navigate('feedback');
+      navigation.closeDrawer();
+      setDropdown(false);
+    };
 
       useEffect(() => {
         if(fontLoaded)
@@ -65,7 +108,7 @@ const DrawerList = ({navigation}) => {
             <ScrollView style={{paddingTop:20,marginBottom:55}}>
             <View style={{flex:1,padding:20,backgroundColor: '#ffffff',borderBottomRightRadius:25,borderBottomLeftRadius:25}}>
                 <Text style ={styles.welcometext}>Welcome</Text>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={profileclick}>
                 <Text style ={styles.nametext}>Sanath S karanth</Text>
                 </TouchableOpacity>
                 {/* <Divider orientation="horizontal" style={{paddingTop:10}} /> */}
@@ -116,7 +159,7 @@ const DrawerList = ({navigation}) => {
             <>
             <View style={{flex:1,paddingLeft:30,paddingRight:30,marginTop:-4,paddingTop:10}}>
             <Button
-                    onPress={() => { console.log('pressed'); }}
+                    onPress={travelclick}
                     title="Travel"
                     titleStyle={styles.drawersubtext}
                     buttonStyle={{ justifyContent: 'flex-start'}}
@@ -128,7 +171,7 @@ const DrawerList = ({navigation}) => {
             </View>
             <View style={{flex:1,paddingLeft:30,paddingRight:30,marginTop:-4,paddingTop:10}}>
             <Button
-                    onPress={() => { console.log('pressed'); }}
+                    onPress={foodclick}
                     title="Food"
                     titleStyle={styles.drawersubtext}
                     buttonStyle={{ justifyContent: 'flex-start'}}
@@ -140,7 +183,7 @@ const DrawerList = ({navigation}) => {
             </View>
             <View style={{flex:1,paddingLeft:30,paddingRight:30,marginTop:-4,paddingTop:10}}>
             <Button
-                    onPress={() => { console.log('pressed'); }}
+                    onPress={shoppingclick}
                     title="Shopping"
                     titleStyle={styles.drawersubtext}
                     buttonStyle={{ justifyContent: 'flex-start'}}
@@ -152,7 +195,7 @@ const DrawerList = ({navigation}) => {
             </View>
             <View style={{flex:1,paddingLeft:30,paddingRight:30,marginTop:-4,paddingTop:10}}>
             <Button
-                    onPress={() => { console.log('pressed'); }}
+                    onPress={healthclick}
                     title="Health Care"
                     titleStyle={styles.drawersubtext}
                     buttonStyle={{ justifyContent: 'flex-start'}}
@@ -162,7 +205,7 @@ const DrawerList = ({navigation}) => {
                     }
                 ></Button>
             </View>
-            <View style={{flex:1,paddingLeft:30,paddingRight:30,marginTop:-4,paddingTop:10}}>
+            {/* <View style={{flex:1,paddingLeft:30,paddingRight:30,marginTop:-4,paddingTop:10}}>
             <Button
                     onPress={() => { console.log('pressed'); }}
                     title="Education"
@@ -185,7 +228,7 @@ const DrawerList = ({navigation}) => {
                         <FontAwesome name="bank" style={{paddingRight:12,paddingBottom:3}} size={20} color="black" />
                     }
                 ></Button>
-            </View>
+            </View> */}
             </> 
             }
             
@@ -203,7 +246,7 @@ const DrawerList = ({navigation}) => {
             </View>
             <View style={{flex:1,margin:8,marginTop:0,paddingBottom:8}}>
                 <Button
-                    onPress={() => { console.log('pressed'); }}
+                    onPress={feedbackclick}
                     title="Feedback"
                     titleStyle={styles.drawertext}
                     buttonStyle={{ justifyContent: 'flex-start'}}

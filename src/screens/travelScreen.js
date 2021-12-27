@@ -430,12 +430,12 @@ const allplaceData4 = [
                     icon={<MaterialIcons name="arrow-back-ios" style={{paddingLeft:6}} size={30} color="black" />}
                     />
                 </Col>
-                <Col size={20}>
+                <Col size={15}>
                 </Col>
-                <Col size={45}>
+                <Col size={55}>
                     <Text style ={styles.headingtext}>Travel</Text>
                 </Col>
-                <Col size={20}>
+                <Col size={15}>
                 </Col>
             </Grid>
         </View>
@@ -450,7 +450,7 @@ const allplaceData4 = [
                 { popularplaceData.map((item,key) => {
                   return(
                     <View key={key} style={{padding:8}}>
-                      <Card containerStyle={{borderRadius:10,padding:8,margin:0}}>
+                      <Card containerStyle={{borderRadius:10,padding:8,margin:0,width: 250}}>
                         <View style={styles.imagecontainer}>
                           <Image
                             style={styles.topcardimage}
@@ -485,7 +485,7 @@ const allplaceData4 = [
           </View>
 
           <View style={{flex:1,backgroundColor:'transparent',paddingTop:10,paddingBottom:15}}>
-            <Text style ={styles.headingtext}>All Places (36)</Text>
+            <Text style ={styles.headingtext}>All Places ({allplaceData1.length+allplaceData2.length+allplaceData3.length+allplaceData4.length})</Text>
             { digitone && allplaceData1.map((item,key) => {
               return(
               <View key={key}>
@@ -704,7 +704,7 @@ const allplaceData4 = [
       paddingBottom: 0,
     },
     topcardimage: {
-      width: 220,
+      width: '100%',
       height: 180,
       borderRadius:8,
     },

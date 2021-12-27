@@ -363,22 +363,6 @@ const allplaceData3 = [
     loadertimeout();
   }
 
-  const digitfourclick = () => {
-    setDigitone(false);
-    setDigittwo(false);
-    setDigitthree(false);
-    setDigitfour(true);
-    setOnecolor('#000000');
-    setOnebgcolor('#DEDEDE');
-    setTwocolor('#000000');
-    setTwobgcolor('#DEDEDE');
-    setThreecolor('#000000');
-    setThreebgcolor('#DEDEDE');
-    setFourcolor('#FFFFFF');
-    setFourbgcolor('#000000');
-    loadertimeout();
-  }
-
   const backiconclick = () => {
     navigation.navigate('dashboard');
   }
@@ -425,12 +409,12 @@ const allplaceData3 = [
                     icon={<MaterialIcons name="arrow-back-ios" style={{paddingLeft:6}} size={30} color="black" />}
                     />
                 </Col>
-                <Col size={20}>
+                <Col size={15}>
                 </Col>
-                <Col size={45}>
+                <Col size={55}>
                     <Text style ={styles.headingtext}>Food</Text>
                 </Col>
-                <Col size={20}>
+                <Col size={15}>
                 </Col>
             </Grid>
         </View>
@@ -445,7 +429,7 @@ const allplaceData3 = [
                 { popularplaceData.map((item,key) => {
                   return(
                     <View key={key} style={{padding:8}}>
-                      <Card containerStyle={{borderRadius:10,padding:8,margin:0}}>
+                      <Card containerStyle={{borderRadius:10,padding:8,margin:0,width: 250}}>
                         <View style={styles.imagecontainer}>
                           <Image
                             style={styles.topcardimage}
@@ -515,7 +499,7 @@ const allplaceData3 = [
           </View>
 
           <View style={{flex:1,backgroundColor:'transparent',paddingTop:10,paddingBottom:15}}>
-            <Text style ={styles.headingtext}>All Restaurants (25)</Text>
+            <Text style ={styles.headingtext}>All Restaurants ({allplaceData1.length+allplaceData2.length+allplaceData3.length})</Text>
             { digitone && allplaceData1.map((item,key) => {
               return(
               <View key={key}>
@@ -818,7 +802,7 @@ const allplaceData3 = [
       paddingBottom: 0,
     },
     topcardimage: {
-      width: 230,
+      width: '100%',
       height: 180,
       borderRadius:8,
     },
