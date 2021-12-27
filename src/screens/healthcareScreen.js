@@ -282,10 +282,11 @@ export default function HealthcareScreen({navigation}) {
               </ScrollView>
           </View>
 
+          <View style={{flex:1,backgroundColor:'transparent',paddingTop:10,paddingBottom:15}}>
+            <Text style ={styles.headingtext}>All Places ({allplaceData1.length})</Text>
           { digitone && allplaceData1.map((item,key) => {
               return(
-            <View key={key} style={{flex:1,backgroundColor:'transparent',paddingTop:10,paddingBottom:15}}>
-              <Text style ={styles.headingtext}>All Hospitals ({allplaceData1.length})</Text>
+            <View key={key}>
                 <Card containerStyle={{padding:8}}>
                   <View style={styles.imagecontainer}>
                           <Image
@@ -322,6 +323,7 @@ export default function HealthcareScreen({navigation}) {
           </View>
           )
           })}
+          </View>
           <View style={{flex: 1,
                 justifyContent: 'center',
                 alignItems: 'center',
