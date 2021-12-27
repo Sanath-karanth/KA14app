@@ -22,8 +22,6 @@ import AnimatedLoader from "react-native-animated-loader";
 // import PagerView from 'react-native-pager-view';
 import Carousel from 'react-native-snap-carousel';
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -33,10 +31,6 @@ const fetchFonts = () => {
     'Avenir-Medium': require('../../assets/fonts/Avenir-Medium.ttf'),
   });
 };
-
-const images = new Array(4).fill('https://images.unsplash.com/photo-1556740749-887f6717d7e4');
-
-const Drawer = createDrawerNavigator();
 
 const DashboardScreen = (props) => {
 
@@ -51,10 +45,19 @@ const DashboardScreen = (props) => {
 
   const scrollX = useRef(new Animated.Value(0)).current;
 
+  const scrollRef = useRef();
+  // const stopAutoScroll = null;
+  const autoslide = () => {
+    scrollRef.current?.scrollTo({ x: 400+90, animated: true })
+    let stopAutoScroll = setTimeout(autoslide, 3000);
+  }
+  
+
   const { width: windowWidth } = useWindowDimensions();
 
   useEffect(() => {
     LogBox.ignoreAllLogs();
+    // autoslide();
   }, [])
 
     const toggleDrawer = () => {
@@ -194,6 +197,7 @@ const DashboardScreen = (props) => {
                 <SafeAreaView style={styles.slidecontainer}>
                   <View style={styles.scrollContainer}>
                     <ScrollView
+                      // ref={scrollRef}
                       horizontal={true}
                       pagingEnabled
                       showsHorizontalScrollIndicator={false}

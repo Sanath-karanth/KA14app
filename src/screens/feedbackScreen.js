@@ -199,7 +199,7 @@ export default function FeedbackScreen({navigation}) {
                     underlineColorAndroid="transparent"
                     placeholder="Enter Your valuable Feedback."
                     placeholderTextColor="lightgrey"
-                    numberOfLines={8}
+                    numberOfLines={4}
                     multiline={true}
                     />
                 </View>
