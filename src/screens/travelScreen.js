@@ -387,6 +387,10 @@ const allplaceData4 = [
     navigation.navigate('dashboard');
   }
 
+  const explorepresspopular = () => {
+    navigation.navigate('traveldesp');
+  }
+
   useEffect(() => {
     if(fontLoaded)
     {
@@ -472,6 +476,7 @@ const allplaceData4 = [
                         {/* <Divider orientation="horizontal" style={{marginBottom:4}} /> */}
                         <View style={{padding:10}}>
                           <Button
+                              onPress={explorepresspopular}
                               title="EXPLORE"
                               type="outline"
                             />

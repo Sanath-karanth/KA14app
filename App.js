@@ -12,6 +12,7 @@ import ShoppingScreen from './src/screens/shoppingScreen';
 import HealthcareScreen from './src/screens/healthcareScreen';
 import ProfileScreen from './src/screens/profileScreen';
 import FeedbackScreen from './src/screens/feedbackScreen';
+import TraveldescriptionScreen from './src/screens/traveldescriptionScreen';
 
 import DrawerScreen from './src/component/drawerList';
 
@@ -33,6 +34,7 @@ function MyStack() {
       <Stack.Screen name="health" options={{headerShown: false}} component={HealthcareScreen} />
       <Stack.Screen name="profile" options={{headerShown: false}} component={ProfileScreen} />
       <Stack.Screen name="feedback" options={{headerShown: false}} component={FeedbackScreen} />
+      <Stack.Screen name="traveldesp" options={{headerShown: false}} component={TraveldescriptionScreen} />
     </Stack.Navigator>
   );
 }
