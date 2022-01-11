@@ -1,5 +1,5 @@
 import React,{useState, useRef,useEffect} from 'react';
-// import { StatusBar } from 'expo-status-bar';
+import { StatusBar } from 'expo-status-bar';
 import LottieView from 'lottie-react-native';
 import { SafeAreaView,
             View,
@@ -11,7 +11,8 @@ import { SafeAreaView,
             BackHandler,
             Platform,
             TextInput,
-            Image } from 'react-native';
+            Image,
+            useWindowDimensions  } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons,Feather,FontAwesome5,Entypo,FontAwesome,MaterialCommunityIcons,MaterialIcons } from '@expo/vector-icons';
 import { Input,Button,Rating, RatingProps,AirbnbRating } from 'react-native-elements';
@@ -20,6 +21,7 @@ import AppLoading from 'expo-app-loading';
 import AnimatedLoader from "react-native-animated-loader";
 import { Row, Col, Grid } from "react-native-easy-grid";
 import { SliderBox } from "react-native-image-slider-box";
+import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -29,6 +31,8 @@ const fetchFonts = () => {
     'Avenir-Medium': require('../../assets/fonts/Avenir-Medium.ttf'),
   });
 };
+
+
 
 export default function TraveldescriptionScreen({navigation}) {
 
@@ -42,35 +46,47 @@ export default function TraveldescriptionScreen({navigation}) {
 
   const animation = useRef(null);
 
-  const validate = (values) => {
-    const errors = {};
+  const layout = useWindowDimensions();
 
-    if (!values.username) {
-        errors.username = '* Username is required.';
-    }else if (!/^[A-Za-z\b]+$/.test(values.username)) {
-        errors.username = 'Please enter a Valid username.';
-  }
+  const [index, setIndex] = React.useState(0);
+  const [routes] = React.useState([
+    { key: 'first', title: 'About' },
+    { key: 'second', title: 'Second' },
+  ]);
 
-     if (!values.feedback) {
-        errors.feedback = '* Feedback is required.';
-    } else if (!/^[A-Za-z\b]+$/.test(values.feedback)) {
-        errors.feedback = 'Please enter a Valid Feedback.';
-    }
+  const FirstRoute = () => (
+    <View style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
+      <Text>ghghghg</Text>
+    </View>
+  );
+  
+  const SecondRoute = () => (
+    <View style={{ flex: 1, backgroundColor: '#FFFFFF' }}></View>
+  );
+  
+  const renderScene = SceneMap({
+    first: FirstRoute,
+    second: SecondRoute,
+  });
 
-    if (!values.phoneno) {
-        errors.phoneno = '* Phone no is required.';
-    }else if (!/[6-9]\d{9}$/i.test(values.phoneno)) {
-      errors.phoneno = 'Please enter a Valid 10-digit phone number.';
-    }
-
-    if (!values.city) {
-      errors.city = '* City name is required.';
-  }else if (!/^[A-Za-z\b]+$/.test(values.city)) {
-    errors.city = 'Please enter a Valid City name.';
-}
-
-    return errors;
-};
+  const renderTabBar = props => {
+    return (
+      <TabBar
+        {...props}
+        renderLabel={({ focused, route }) => {
+          return (
+            <Text
+              size={20}
+              style={{ color: 'black', margin: 8 }}>
+              {route.title}
+            </Text>
+          );
+        }}
+        indicatorStyle={{ backgroundColor: 'black'}}
+        style={{backgroundColor: '#FFFFFF'}}
+      />
+    );
+  };
 
 const loadertimeout = () => {
     setSpin(true);
@@ -114,65 +130,106 @@ const loadertimeout = () => {
 
     return (
       <SafeAreaView style={styles.container}>
-          {/* <View style={styles.imagecontainer}>
-                    <Image
-                    style={styles.topcardimage}
-                    source={require('../../assets/travel/mattur/mattur.jpg')}
-                    />
-          </View> */}
-          <View>
-          <SliderBox
-            images={slideimages}
-            sliderBoxHeight={200}
-            // onCurrentImagePressed={index => console.warn(`image ${index} pressed`)}
-            dotColor="#FFEE58"
-            // inactiveDotColor="#90A4AE"
-            paginationBoxVerticalPadding={20}
-            autoplay
-            circleLoop
-          />
-          </View>
-
-        <View style={{flex:1,
-                      flexDirection:'row',
-                      backgroundColor:'transparent',
-                      paddingTop:30,
-                      marginHorizontal: 20,
-                      paddingBottom:0
-                      }}>
-
-                
-            <Grid>
-                <Col size={15}>
-                  <Button
-                    type="clear"
-                    onPress={backiconclick}
-                    buttonStyle={{
-                        backgroundColor: "#dedede",
-                        borderRadius: 30
-                    }}
-                    containerStyle={{borderRadius: 30}}
-                    icon={<MaterialIcons name="arrow-back-ios" style={{paddingLeft:6}} size={30} color="black" />}
-                    />
-                    </Col>
-                    <Col size={15}>
-                    </Col>
-                    <Col size={55}>
-                        <Text style ={styles.headingtext}>Feedback</Text>
-                    </Col>
-                    <Col size={15}>
-                    </Col>
-                </Grid>
-            </View>
-        
-        <AnimatedLoader
-              visible={spin}
-              overlayColor="rgba(0,0,0,0.5)"
-              source={require('./../lotties/loader/53635-loader.json')}
-              animationStyle={styles.lottiespin}
-              speed={1}
+        <StatusBar backgroundColor="#abbabb" barStyle="light-content" />
+          <ScrollView style={{flex: 1}} contentContainerStyle={{flexGrow:1}}>
+          
+            <SliderBox
+              images={slideimages}
+              sliderBoxHeight={280}
+              // style={{paddingLeft:0}}
+              // onCurrentImagePressed={index => console.warn(`image ${index} pressed`)}
+              dotColor="#FFFFFF"
+              // inactiveDotColor="#90A4AE"
+              paginationBoxVerticalPadding={20}
+              autoplay
+              circleLoop
+              inactiveDotColor="#c3c3c3"
+              // resizeMode={'cover'}
+              ImageComponentStyle={{borderTopLeftRadius: 15,borderTopRightRadius:15, width: '97%'}}
             >
-        </AnimatedLoader>
+            </SliderBox>
+            <Button
+                      type="clear"
+                      onPress={backiconclick}
+                      buttonStyle={{
+                          backgroundColor: "#FFFFFF",
+                          borderRadius: 30
+                      }}
+                      containerStyle={{borderRadius: 30,position:'absolute',left:15,top:15}}
+                      icon={<MaterialIcons name="arrow-back-ios" style={{padding:0,left:5}} size={30} color="black" />}
+                      />
+            
+
+            <View style={{flex:0.5,
+                        flexDirection:'row',
+                        justifyContent:'space-between',
+                        paddingTop:10,
+                        marginHorizontal: 0,
+                        paddingRight:20
+                        }}>
+                          <Grid>
+                      <Col size={95}>
+                        <Row style={{marginVertical:2}}>
+                          <Text style ={styles.titletext}>Sakrebailu Sakrebailu  </Text>
+                        </Row>
+                        <Row style={{marginVertical:-8}}>
+                        <MaterialCommunityIcons 
+                            name="map-marker-radius" 
+                            size={20}
+                            style={{paddingLeft: 20,paddingRight:4}} 
+                            color="black" />
+                            <Text style ={styles.subtitletext}>18 km from city center</Text>
+                        </Row>
+                      </Col>
+                      <Col size={5}>
+                        <FontAwesome name="bookmark-o" size={24} color="black" style={{paddingTop:10}} />
+                        {/* <FontAwesome name="bookmark" size={24} color="black" style={{paddingTop:10}} /> */}
+                      </Col>
+                  </Grid>
+              </View>
+
+          <View style={{flex:1,
+                        flexDirection:'row',
+                        backgroundColor:'transparent',
+                        paddingTop:8,
+                        marginHorizontal: 0,
+                        paddingBottom:0
+                        }}>
+
+                  
+              <Grid>
+                  <Col size={15}>
+                    
+                      </Col>
+                      <Col size={15}>
+                      </Col>
+                      <Col size={55}>
+                          <Text style ={styles.headingtext}>Feedback</Text>
+                      </Col>
+                      <Col size={15}>
+                      </Col>
+                  </Grid>
+              </View>
+              <View style={{flex:4}}>
+              <TabView
+                  navigationState={{ index, routes }}
+                  renderScene={renderScene}
+                  onIndexChange={setIndex}
+                  initialLayout={{ width: layout.width }}
+                  renderTabBar={renderTabBar}
+                />
+                
+              </View>
+            
+            </ScrollView>
+          <AnimatedLoader
+                visible={spin}
+                overlayColor="rgba(0,0,0,0.5)"
+                source={require('./../lotties/loader/53635-loader.json')}
+                animationStyle={styles.lottiespin}
+                speed={1}
+              >
+          </AnimatedLoader>
       </SafeAreaView>
     );
   }
@@ -181,21 +238,18 @@ const loadertimeout = () => {
     container: {
       flex: 1,
       justifyContent: 'center',
-      marginTop:40
+      paddingTop:40,
+      backgroundColor:'#FFFFFF'
     },
-    headertext: {
+    titletext: {
       color: '#000000',
-      justifyContent: 'center',
-      textAlign:'center',
-      paddingLeft:10,
       fontSize:20,
-      fontFamily:'Avenir-Heavy'
+      marginHorizontal: 20,
+      fontFamily:'Avenir-Medium'
     },
-    headingtext: {
+    subtitletext: {
         color: '#000000',
-        fontSize:24,
-        paddingTop:4,
-        marginHorizontal: 20,
+        fontSize:14,
         fontFamily:'Avenir-Medium'
       },
     inputtextboxstyle: {
