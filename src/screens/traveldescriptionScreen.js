@@ -14,14 +14,15 @@ import { SafeAreaView,
             Image,
             useWindowDimensions  } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Ionicons,Feather,FontAwesome5,Entypo,FontAwesome,MaterialCommunityIcons,MaterialIcons } from '@expo/vector-icons';
-import { Input,Button,Rating, RatingProps,AirbnbRating } from 'react-native-elements';
+import { Ionicons,Feather,FontAwesome5,Entypo,FontAwesome,MaterialCommunityIcons,MaterialIcons,AntDesign } from '@expo/vector-icons';
+import { Input,Button,Rating, RatingProps,AirbnbRating,Card } from 'react-native-elements';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import AnimatedLoader from "react-native-animated-loader";
 import { Row, Col, Grid } from "react-native-easy-grid";
 import { SliderBox } from "react-native-image-slider-box";
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
+import ViewMoreText from 'react-native-view-more-text';
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -51,17 +52,88 @@ export default function TraveldescriptionScreen({navigation}) {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     { key: 'first', title: 'About' },
-    { key: 'second', title: 'Second' },
+    { key: 'second', title: 'Overview' },
   ]);
 
   const FirstRoute = () => (
-    <View style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
-      <Text>ghghghg</Text>
-    </View>
+      <ScrollView style={styles.aboutdesp}>
+        <View style={{ padding: 15}}>
+        <ViewMoreText
+            numberOfLines={9}
+            renderViewMore={renderViewMore}
+            renderViewLess={renderViewLess}
+            //textStyle={{fontFamily: 'Avenir-Roman',color:'red'}}
+            >
+            <Text>On the Shimoga Thirthahalli road, around 14 km from Shimoga is the Sakrebailu Elephant Camp. The camp houses several captive elephants. Sakrebailu is an eco-tourism center. The elephants in these camps are trained by skilled Mahouts. The camp is located on the banks of the River Tunga.</Text>
+            <Text>On the Shimoga Thirthahalli road, around 14 km from Shimoga is the Sakrebailu Elephant Camp. The camp houses several captive elephants. Sakrebailu is an eco-tourism center. The elephants in these camps are trained by skilled Mahouts. The camp is located on the banks of the River Tunga.</Text>
+        </ViewMoreText>
+        </View>
+      </ScrollView>
   );
   
   const SecondRoute = () => (
-    <View style={{ flex: 1, backgroundColor: '#FFFFFF' }}></View>
+    <View style={styles.overviewdesp}>
+      <View style={styles.overviewsubdesp}>
+          <Card>
+            <View style={{flexDirection:'row',justifyContent:'center'}}>
+                <Text style={styles.cardsubhead}>Rating</Text>
+            </View>
+            <View style={{flexDirection:'row',justifyContent:'center'}}>
+              <Entypo 
+                  name="star" 
+                  size={24}
+                  style={{paddingRight:0}} 
+                  color="#FF9529" />
+              <Text style={styles.cardhead}>4.5</Text> 
+            </View>
+          </Card>
+      </View>
+      <View style={styles.overviewsubdesp}>
+          <Card>
+            <View style={{flexDirection:'row',justifyContent:'center'}}>
+                <Text style={styles.cardsubhead}>Distance</Text>
+            </View>
+            <View style={{flexDirection:'row',justifyContent:'center'}}>
+              <Entypo 
+                  name="location-pin" 
+                  size={24}
+                  style={{paddingRight:4}} 
+                  color="#FF0000" />
+              <Text style={styles.cardhead}>4.5 km</Text> 
+            </View>
+          </Card>
+      </View>
+      <View style={styles.overviewsubdesp}>
+          <Card>
+            <View style={{flexDirection:'row',justifyContent:'center'}}>
+                <Text style={styles.cardsubhead}>Duration</Text>
+            </View>
+            <View style={{flexDirection:'row',justifyContent:'center'}}>
+              <MaterialCommunityIcons 
+                  name="clock" 
+                  size={22}
+                  style={{paddingRight:4}} 
+                  color="#000000" />
+              <Text style={styles.cardhead}>2 hr</Text> 
+            </View>
+          </Card>
+      </View>
+      <View style={styles.overviewsubdesp}>
+          <Card>
+            <View style={{flexDirection:'row',justifyContent:'center'}}>
+                <Text style={styles.cardsubhead}>Temperature</Text>
+            </View>
+            <View style={{flexDirection:'row',justifyContent:'center'}}>
+              <Entypo 
+                  name="cloud" 
+                  size={20}
+                  style={{paddingRight:4}} 
+                  color="#A3E8FD" />
+              <Text style={styles.cardhead}>50 &deg;C</Text> 
+            </View>
+          </Card>
+      </View>
+    </View>
   );
   
   const renderScene = SceneMap({
@@ -87,6 +159,22 @@ export default function TraveldescriptionScreen({navigation}) {
       />
     );
   };
+ 
+  const renderViewMore = (handlePress) => {
+    return (
+      <Text style={{color: 'blue', marginTop: 5}} onPress={handlePress}>
+        Read more
+      </Text>
+    );
+  }
+
+  const renderViewLess = (handlePress) => {
+    return (
+      <Text style={{color: 'red', marginTop: 5}} onPress={handlePress}>
+        Read less
+      </Text>
+    );
+  }
 
 const loadertimeout = () => {
     setSpin(true);
@@ -170,7 +258,7 @@ const loadertimeout = () => {
                           <Grid>
                       <Col size={95}>
                         <Row style={{marginVertical:2}}>
-                          <Text style ={styles.titletext}>Sakrebailu Sakrebailu  </Text>
+                          <Text style ={styles.titletext}>Sakrebailu SakrebailuSakrebailu  </Text>
                         </Row>
                         <Row style={{marginVertical:-8}}>
                         <MaterialCommunityIcons 
@@ -178,7 +266,7 @@ const loadertimeout = () => {
                             size={20}
                             style={{paddingLeft: 20,paddingRight:4}} 
                             color="black" />
-                            <Text style ={styles.subtitletext}>18 km from city center</Text>
+                            <Text style ={styles.subtitletext}>Shivamogga</Text>
                         </Row>
                       </Col>
                       <Col size={5}>
@@ -188,7 +276,7 @@ const loadertimeout = () => {
                   </Grid>
               </View>
 
-          <View style={{flex:1,
+          {/* <View style={{flex:1,
                         flexDirection:'row',
                         backgroundColor:'transparent',
                         paddingTop:8,
@@ -209,7 +297,7 @@ const loadertimeout = () => {
                       <Col size={15}>
                       </Col>
                   </Grid>
-              </View>
+              </View> */}
               <View style={{flex:4}}>
               <TabView
                   navigationState={{ index, routes }}
@@ -220,7 +308,14 @@ const loadertimeout = () => {
                 />
                 
               </View>
-            
+              <View>
+              <TouchableOpacity
+                      // onPress={takemePress} 
+                      style ={styles.registerButton}>
+                        <Text style ={{color:'white',fontFamily:'Avenir-Roman'}}>GET DIRECTION</Text>
+                </TouchableOpacity>
+                
+              </View>
             </ScrollView>
           <AnimatedLoader
                 visible={spin}
@@ -244,13 +339,13 @@ const loadertimeout = () => {
     titletext: {
       color: '#000000',
       fontSize:20,
-      marginHorizontal: 20,
+      paddingLeft: 20,
       fontFamily:'Avenir-Medium'
     },
     subtitletext: {
-        color: '#000000',
+        color: '#a9a9a9',
         fontSize:14,
-        fontFamily:'Avenir-Medium'
+        fontFamily:'Avenir-Roman'
       },
     inputtextboxstyle: {
       borderStyle: 'solid', 
@@ -290,7 +385,7 @@ const loadertimeout = () => {
       marginLeft: 20,
       marginRight: 20,
       marginBottom:20,
-      marginTop:20,
+      marginTop:10,
       backgroundColor:'black',
       justifyContent: 'center',
       alignItems: 'center'
@@ -321,5 +416,30 @@ const loadertimeout = () => {
         // flex: 1,
         // aspectRatio: 1 ,
         borderRadius:8,
+      },
+      aboutdesp: {
+        flex: 1,
+        backgroundColor:'#FFFFFF'
+      },
+      overviewdesp: {
+        flex: 1,
+        flexWrap: 'wrap',
+        flexDirection: 'row',
+        paddingLeft: 30,
+        paddingRight: 30,
+        backgroundColor: "#FFFFFF",
+      },
+      overviewsubdesp: {
+        flexBasis: '50%',
+      },
+      cardhead: {
+        color: '#000000',
+        fontSize:18,
+        fontFamily:'Avenir-Heavy'
+      },
+      cardsubhead: {
+        color: '#a9a9a9',
+        fontSize:14,
+        fontFamily:'Avenir-Roman'
       },
 });
