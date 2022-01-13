@@ -141,6 +141,7 @@ const ProfileScreen = (props) => {
                   </Card>
                 </View>
 
+                <View style={{flex:0.1}}></View>
                 <View style={{flex:1}}>
                   <Card containerStyle={{ marginTop: 5,borderRadius:20 }}>
                     <View style={{flexDirection:'row',justifyContent:'flex-start',marginTop:4,marginBottom:8}}>
@@ -154,14 +155,14 @@ const ProfileScreen = (props) => {
                   </Card>
                 </View>          
               </LinearGradient>
-          <AnimatedLoader
-              visible={spin}
-              overlayColor="rgba(0,0,0,0.5)"
-              source={require('./../lotties/loader/7556-loader-blu.json')}
-              animationStyle={styles.lottiespin}
-              speed={1}
-            >
-          </AnimatedLoader>
+            <AnimatedLoader
+                visible={spin}
+                overlayColor="rgba(0,0,0,0.5)"
+                source={require('./../lotties/loader/7556-loader-blu.json')}
+                animationStyle={styles.lottiespin}
+                speed={1}
+              >
+            </AnimatedLoader>
         </SafeAreaView>
   );
     

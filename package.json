@@ -49,6 +49,7 @@
     "react-native-image-slider-box": "^1.1.14",
     "react-native-image-slider-show": "^1.0.3",
     "react-native-maps": "0.28.0",
+    "react-native-maps-directions": "^1.8.0",
     "react-native-pager-view": "^5.4.9",
     "react-native-paper": "^4.10.0",
     "react-native-safe-area-context": "^3.3.2",

@@ -1,4 +1,4 @@
-import React,{useState, useRef,useEffect} from 'react';
+import React,{useState, useRef,useEffect, createRef} from 'react';
 import { StatusBar } from 'expo-status-bar';
 import LottieView from 'lottie-react-native';
 import { SafeAreaView,
@@ -12,7 +12,8 @@ import { SafeAreaView,
             Platform,
             TextInput,
             Image,
-            useWindowDimensions  } from 'react-native';
+            useWindowDimensions,
+            Dimensions  } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons,Feather,FontAwesome5,Entypo,FontAwesome,MaterialCommunityIcons,MaterialIcons,AntDesign } from '@expo/vector-icons';
 import { Input,Button,Rating, RatingProps,AirbnbRating,Card } from 'react-native-elements';
@@ -23,6 +24,9 @@ import { Row, Col, Grid } from "react-native-easy-grid";
 import { SliderBox } from "react-native-image-slider-box";
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import ViewMoreText from 'react-native-view-more-text';
+import ActionSheet from "react-native-actions-sheet";
+import MapView from 'react-native-maps';
+// import MapViewDirections from 'react-native-maps-directions';
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -33,12 +37,15 @@ const fetchFonts = () => {
   });
 };
 
-
+const actionSheetRef = createRef();
 
 export default function TraveldescriptionScreen({navigation}) {
 
   const [fontLoaded, setFontLoaded] = useState(false);
   const [spin, setSpin] = useState(true);
+
+  const origin = {latitude: 13.92915, longitude: 75.56806};
+  const destination = {latitude: 13.84453, longitude: 75.51406};
   
   const [nameerr, setNameerr] = useState(false);
   const [feedbackerr, setFeedbackerr] = useState(false);
@@ -59,7 +66,7 @@ export default function TraveldescriptionScreen({navigation}) {
       <ScrollView style={styles.aboutdesp}>
         <View style={{ padding: 15}}>
         <ViewMoreText
-            numberOfLines={9}
+            numberOfLines={8}
             renderViewMore={renderViewMore}
             renderViewLess={renderViewLess}
             //textStyle={{fontFamily: 'Avenir-Roman',color:'red'}}
@@ -74,7 +81,7 @@ export default function TraveldescriptionScreen({navigation}) {
   const SecondRoute = () => (
     <View style={styles.overviewdesp}>
       <View style={styles.overviewsubdesp}>
-          <Card>
+          <Card containerStyle={{padding:8}}>
             <View style={{flexDirection:'row',justifyContent:'center'}}>
                 <Text style={styles.cardsubhead}>Rating</Text>
             </View>
@@ -89,7 +96,7 @@ export default function TraveldescriptionScreen({navigation}) {
           </Card>
       </View>
       <View style={styles.overviewsubdesp}>
-          <Card>
+          <Card containerStyle={{padding:8}}>
             <View style={{flexDirection:'row',justifyContent:'center'}}>
                 <Text style={styles.cardsubhead}>Distance</Text>
             </View>
@@ -104,7 +111,7 @@ export default function TraveldescriptionScreen({navigation}) {
           </Card>
       </View>
       <View style={styles.overviewsubdesp}>
-          <Card>
+          <Card containerStyle={{padding:8}}>
             <View style={{flexDirection:'row',justifyContent:'center'}}>
                 <Text style={styles.cardsubhead}>Duration</Text>
             </View>
@@ -119,7 +126,7 @@ export default function TraveldescriptionScreen({navigation}) {
           </Card>
       </View>
       <View style={styles.overviewsubdesp}>
-          <Card>
+          <Card containerStyle={{padding:8}}>
             <View style={{flexDirection:'row',justifyContent:'center'}}>
                 <Text style={styles.cardsubhead}>Temperature</Text>
             </View>
@@ -194,6 +201,13 @@ const loadertimeout = () => {
     "https://source.unsplash.com/1024x768/?girl",
     "https://source.unsplash.com/1024x768/?tree",         
   ]
+
+  const mapMarkers = [
+    {id: 1, coordinate: { latitude: 37.78825, longitude: -122.4324 }},
+    {id: 2, coordinate: { latitude: 37.78835, longitude: -122.4324 }},
+    {id: 3, coordinate: { latitude: 37.78845, longitude: -122.4324 }},
+    {id: 4, coordinate: { latitude: 37.78855, longitude: -122.4324 }},
+]
   
   useEffect(() => {
     if(fontLoaded)
@@ -275,29 +289,7 @@ const loadertimeout = () => {
                       </Col>
                   </Grid>
               </View>
-
-          {/* <View style={{flex:1,
-                        flexDirection:'row',
-                        backgroundColor:'transparent',
-                        paddingTop:8,
-                        marginHorizontal: 0,
-                        paddingBottom:0
-                        }}>
-
-                  
-              <Grid>
-                  <Col size={15}>
-                    
-                      </Col>
-                      <Col size={15}>
-                      </Col>
-                      <Col size={55}>
-                          <Text style ={styles.headingtext}>Feedback</Text>
-                      </Col>
-                      <Col size={15}>
-                      </Col>
-                  </Grid>
-              </View> */}
+              
               <View style={{flex:4}}>
               <TabView
                   navigationState={{ index, routes }}
@@ -310,13 +302,61 @@ const loadertimeout = () => {
               </View>
               <View>
               <TouchableOpacity
-                      // onPress={takemePress} 
+                      // onPress={takemePress}
+                      onPress={() => {
+                        actionSheetRef.current?.setModalVisible();
+                      }} 
                       style ={styles.registerButton}>
                         <Text style ={{color:'white',fontFamily:'Avenir-Roman'}}>GET DIRECTION</Text>
                 </TouchableOpacity>
-                
+
+                <ActionSheet ref={actionSheetRef}>
+                  <View style={{padding: 20,alignItems: 'center',height:500}}>
+                    <Text style ={styles.mapheading}>MapView</Text>
+                    <View style={styles.mapcontainer}>
+                      <MapView
+                          style={ styles.map }
+                          zoomEnabled={true}
+                          scrollEnabled={true}
+                          showsCompass={true}
+                          showsScale={true}
+                          tintColor='red'
+                          initialRegion={{
+                            latitude: 13.84453,
+                            longitude: 75.51406,
+                            latitudeDelta: 0.245,
+                            longitudeDelta: 0.245,
+                          }}
+                      >
+                        {/* <MapViewDirections
+                          origin={{latitude: 13.92915,longitude: 75.56806}}
+                          destination={{latitude: 13.84453,longitude: 75.51406}}
+                          strokeWidth={3}
+                          strokeColor="hotpink"
+                          apikey={'bhghghghg'}
+                        /> */}
+                      <MapView.Marker
+                        coordinate={{latitude: 13.92915,longitude: 75.56806}}
+                        title={'From'}
+                        description={'Shivamogga'}
+                        pinColor='#ADD8E6'
+                      />
+                      <MapView.Marker
+                          coordinate={{latitude: 13.84453,longitude: 75.51406}}
+                          title={'To'}
+                          description={'Sakrebailu'}
+                          pinColor='red'
+                        />
+                        {/* {mapMarkers.map((item) => {
+                            <MapView.Marker key={`test-${item.id}`} coordinate={item.coordinate}/>
+                        })}  */}
+                      </MapView>
+                    </View>
+                  </View>
+                </ActionSheet>
               </View>
             </ScrollView>
+            
           <AnimatedLoader
                 visible={spin}
                 overlayColor="rgba(0,0,0,0.5)"
@@ -333,7 +373,7 @@ const loadertimeout = () => {
     container: {
       flex: 1,
       justifyContent: 'center',
-      paddingTop:40,
+      paddingTop:30,
       backgroundColor:'#FFFFFF'
     },
     titletext: {
@@ -384,7 +424,7 @@ const loadertimeout = () => {
       height:40,
       marginLeft: 20,
       marginRight: 20,
-      marginBottom:20,
+      marginBottom:10,
       marginTop:10,
       backgroundColor:'black',
       justifyContent: 'center',
@@ -427,6 +467,7 @@ const loadertimeout = () => {
         flexDirection: 'row',
         paddingLeft: 30,
         paddingRight: 30,
+        marginTop: 10, 
         backgroundColor: "#FFFFFF",
       },
       overviewsubdesp: {
@@ -441,5 +482,23 @@ const loadertimeout = () => {
         color: '#a9a9a9',
         fontSize:14,
         fontFamily:'Avenir-Roman'
+      },
+      mapheading: {
+        color: '#000000',
+        fontSize:20,
+        fontFamily:'Avenir-Roman',
+      },
+      mapcontainer: {
+        flex: 1,
+        paddingTop: 20,
+        width: '100%',
+        height: '100%',
+        
+      },
+      map: {
+        width: '100%',
+        height: '100%',
+        // width: Dimensions.get("window").width,
+        // height: Dimensions.get("window").height,
       },
 });
